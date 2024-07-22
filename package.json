@@ -1,0 +1,17 @@
+{
+  "name": "telemetry-sh",
+  "version": "1.0.1",
+  "description": "A simple telemetry logging SDK for JavaScript.",
+  "main": "src/telemetry.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "telemetry",
+    "logging",
+    "api"
+  ],
+  "author": "JR R",
+  "license": "ISC"
+}
