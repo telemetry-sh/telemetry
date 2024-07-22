@@ -1,5 +1,3 @@
-// telemetry.js
-
 class Telemetry {
   constructor() {
     this.apiKey = null;
@@ -10,7 +8,7 @@ class Telemetry {
     this.apiKey = apiKey;
   }
 
-  log(table, data) {
+  async log(table, data) {
     if (!this.apiKey) {
       throw new Error(
         "API key is not initialized. Please call init() with your API key."
@@ -27,17 +25,14 @@ class Telemetry {
       table: table,
     };
 
-    fetch(`${this.baseUrl}/log`, {
+    await fetch(`${this.baseUrl}/log`, {
       method: "POST",
       headers: headers,
       body: JSON.stringify(body),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error("Error:", error));
+    });
   }
 
-  query(query) {
+  async query(query) {
     if (!this.apiKey) {
       throw new Error(
         "API key is not initialized. Please call init() with your API key."
@@ -55,14 +50,13 @@ class Telemetry {
       json: true,
     };
 
-    fetch(`${this.baseUrl}/query`, {
+    const response = await fetch(`${this.baseUrl}/query`, {
       method: "POST",
       headers: headers,
       body: JSON.stringify(body),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error("Error:", error));
+    });
+    const responseData = await response.json();
+    return responseData;
   }
 }
 
