@@ -30,6 +30,9 @@ class Telemetry {
       headers: headers,
       body: JSON.stringify(body),
     });
+
+    const responseData = await response.json();
+    return responseData;
   }
 
   async query(query) {
@@ -55,6 +58,7 @@ class Telemetry {
       headers: headers,
       body: JSON.stringify(body),
     });
+
     const responseData = await response.json();
     return responseData;
   }
