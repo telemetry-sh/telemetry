@@ -25,7 +25,7 @@ class Telemetry {
       table: table,
     };
 
-    await fetch(`${this.baseUrl}/log`, {
+    const response = await fetch(`${this.baseUrl}/log`, {
       method: "POST",
       headers: headers,
       body: JSON.stringify(body),
