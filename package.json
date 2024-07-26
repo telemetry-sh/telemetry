@@ -1,11 +1,13 @@
 {
   "name": "telemetry-sh",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A simple telemetry logging SDK for JavaScript.",
-  "main": "src/telemetry.js",
+  "main": "dist/telemetry.js",
+  "types": "dist/telemetry.d.ts",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "keywords": [
     "telemetry",
@@ -13,5 +15,9 @@
     "api"
   ],
   "author": "JR R",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.0.0",
+    "@types/node": "^14.0.0"
+  }
 }

@@ -1,14 +1,17 @@
 class Telemetry {
+  private apiKey: string | null;
+  private baseUrl: string;
+
   constructor() {
     this.apiKey = null;
     this.baseUrl = "https://api.telemetry.sh";
   }
 
-  init(apiKey) {
+  init(apiKey: string): void {
     this.apiKey = apiKey;
   }
 
-  async log(table, data) {
+  async log(table: string, data: any): Promise<any> {
     if (!this.apiKey) {
       throw new Error(
         "API key is not initialized. Please call init() with your API key."
@@ -35,7 +38,7 @@ class Telemetry {
     return responseData;
   }
 
-  async query(query) {
+  async query(query: string): Promise<any> {
     if (!this.apiKey) {
       throw new Error(
         "API key is not initialized. Please call init() with your API key."
