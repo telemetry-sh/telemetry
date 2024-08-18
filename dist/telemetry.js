@@ -15,8 +15,8 @@ class Telemetry {
     init(apiKey) {
         this.apiKey = apiKey;
     }
-    log(table, data) {
-        return __awaiter(this, void 0, void 0, function* () {
+    log(table_1, data_1) {
+        return __awaiter(this, arguments, void 0, function* (table, data, options = {}) {
             if (!this.apiKey) {
                 throw new Error("API key is not initialized. Please call init() with your API key.");
             }
@@ -24,10 +24,7 @@ class Telemetry {
                 "Content-Type": "application/json",
                 Authorization: this.apiKey,
             };
-            const body = {
-                data: data,
-                table: table,
-            };
+            const body = Object.assign({ data: data, table: table }, options);
             const response = yield fetch(`${this.baseUrl}/log`, {
                 method: "POST",
                 headers: headers,
@@ -37,8 +34,8 @@ class Telemetry {
             return responseData;
         });
     }
-    query(query) {
-        return __awaiter(this, void 0, void 0, function* () {
+    query(query_1) {
+        return __awaiter(this, arguments, void 0, function* (query, options = {}) {
             if (!this.apiKey) {
                 throw new Error("API key is not initialized. Please call init() with your API key.");
             }
@@ -46,11 +43,7 @@ class Telemetry {
                 "Content-Type": "application/json",
                 Authorization: this.apiKey,
             };
-            const body = {
-                query: query,
-                realtime: true,
-                json: true,
-            };
+            const body = Object.assign({ query: query, realtime: true, json: true }, options);
             const response = yield fetch(`${this.baseUrl}/query`, {
                 method: "POST",
                 headers: headers,

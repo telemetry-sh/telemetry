@@ -11,7 +11,11 @@ class Telemetry {
     this.apiKey = apiKey;
   }
 
-  async log(table: string, data: any): Promise<any> {
+  async log(
+    table: string,
+    data: any,
+    options: Record<string, any> = {}
+  ): Promise<any> {
     if (!this.apiKey) {
       throw new Error(
         "API key is not initialized. Please call init() with your API key."
@@ -26,6 +30,7 @@ class Telemetry {
     const body = {
       data: data,
       table: table,
+      ...options,
     };
 
     const response = await fetch(`${this.baseUrl}/log`, {
@@ -38,7 +43,7 @@ class Telemetry {
     return responseData;
   }
 
-  async query(query: string): Promise<any> {
+  async query(query: string, options: Record<string, any> = {}): Promise<any> {
     if (!this.apiKey) {
       throw new Error(
         "API key is not initialized. Please call init() with your API key."
@@ -54,6 +59,7 @@ class Telemetry {
       query: query,
       realtime: true,
       json: true,
+      ...options,
     };
 
     const response = await fetch(`${this.baseUrl}/query`, {
