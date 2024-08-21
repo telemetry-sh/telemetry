@@ -1,6 +1,6 @@
 {
   "name": "telemetry-sh",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A simple telemetry logging SDK for JavaScript.",
   "main": "dist/telemetry.js",
   "types": "dist/telemetry.d.ts",
