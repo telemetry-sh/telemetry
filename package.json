@@ -1,13 +1,22 @@
 {
   "name": "telemetry-sh",
-  "version": "1.0.7",
+  "version": "1.0.8",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/telemetry.js",
+      "require": "./dist/cjs/telemetry.js"
+    }
+  },
   "description": "A simple telemetry logging SDK for JavaScript.",
-  "main": "dist/telemetry.js",
-  "types": "dist/telemetry.d.ts",
+  "main": "./dist/cjs/telemetry.js",
+  "module": "./dist/esm/telemetry.js",
+  "types": "./dist/esm/telemetry.d.ts",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build:esm": "tsc --project tsconfig.esm.json",
+    "build:cjs": "tsc --project tsconfig.cjs.json",
+    "build": "npm run build:esm && npm run build:cjs"
   },
   "keywords": [
     "telemetry",
@@ -17,7 +26,7 @@
   "author": "JR R",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^4.0.0",
-    "@types/node": "^14.0.0"
+    "typescript": "^5.5.4",
+    "@types/node": "^20.14.12"
   }
 }
